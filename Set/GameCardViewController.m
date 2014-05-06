@@ -13,7 +13,7 @@
 @interface GameCardViewController ()
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSelecter;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @end
@@ -52,12 +52,14 @@
         [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+        self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
     
 }
-- (IBAction)redealButton:(UIButton *)sender {
+
+- (IBAction)dealButton:(UIBarButtonItem *)sender {
     [self redeal];
+
 }
 
 - (void) redeal {

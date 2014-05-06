@@ -28,6 +28,7 @@
 		F1B95CFF19186EFB00A633DF /* GameCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95CFE19186EFB00A633DF /* GameCardViewController.m */; };
 		F1B95D041918700F00A633DF /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D011918700F00A633DF /* PlayingCard.m */; };
 		F1B95D051918700F00A633DF /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D031918700F00A633DF /* PlayingCardDeck.m */; };
+		F1B95D0819187B0400A633DF /* SetGameCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D0719187B0400A633DF /* SetGameCardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		F1B95D011918700F00A633DF /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		F1B95D021918700F00A633DF /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		F1B95D031918700F00A633DF /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		F1B95D0619187B0400A633DF /* SetGameCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetGameCardViewController.h; sourceTree = "<group>"; };
+		F1B95D0719187B0400A633DF /* SetGameCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetGameCardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +206,8 @@
 		F1B95CF319186EA100A633DF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F1B95D0619187B0400A633DF /* SetGameCardViewController.h */,
+				F1B95D0719187B0400A633DF /* SetGameCardViewController.m */,
 				F1B95CFD19186EFB00A633DF /* GameCardViewController.h */,
 				F1B95CFE19186EFB00A633DF /* GameCardViewController.m */,
 			);
@@ -314,6 +319,7 @@
 				F1B95CFF19186EFB00A633DF /* GameCardViewController.m in Sources */,
 				F1B95CCA191869B800A633DF /* AppDelegate.m in Sources */,
 				F1B95CC6191869B800A633DF /* main.m in Sources */,
+				F1B95D0819187B0400A633DF /* SetGameCardViewController.m in Sources */,
 				F1B95D041918700F00A633DF /* PlayingCard.m in Sources */,
 				F1B95CF819186EDB00A633DF /* Card.m in Sources */,
 			);
