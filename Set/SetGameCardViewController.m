@@ -7,6 +7,7 @@
 //
 
 #import "SetGameCardViewController.h"
+#import "SetCardDeck.h"
 
 @interface SetGameCardViewController ()
 
@@ -22,6 +23,7 @@
     }
     return self;
 }
+#warning TODO: need to override "CreateDeck" or any other reference to playingCardDeck
 
 - (void)viewDidLoad
 {
