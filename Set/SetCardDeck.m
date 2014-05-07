@@ -25,6 +25,7 @@
                         card.shading = shade;
                         card.color = color;
                         [self addCard:card];
+                        NSLog (@"Added card: %@", card.description);
                     }
                 }
             }

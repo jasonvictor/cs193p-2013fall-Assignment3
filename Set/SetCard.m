@@ -39,7 +39,7 @@
 
 #pragma mark setters
 - (void) setNumber:(NSNumber *)number {
-    if ([number intValue] < [SetCard maxNumber]) {
+    if ([number intValue] <= [SetCard maxNumber]) {
         _number = number;
     }
 }
