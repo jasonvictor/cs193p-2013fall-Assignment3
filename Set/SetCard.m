@@ -57,7 +57,7 @@
     else if ([self.shading isEqualToString:@"open"]) {
         [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName: @5}];
     }
-        
+    
     return [[NSMutableAttributedString alloc] initWithString:returnValue attributes:attributes];
 }
 
@@ -67,7 +67,7 @@
 }
 
 + (NSArray *)validSymbols {
-    return @[@"🔺", @"▫️", @"⚪️"];
+    return @[@"▲", @"◼︎", @"●"];
 }
 
 + (NSArray *)validShading {

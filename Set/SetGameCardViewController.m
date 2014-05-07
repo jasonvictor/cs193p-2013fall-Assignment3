@@ -40,7 +40,7 @@
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
-        [cardButton setTitle:@"SET CARD" forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:card.attributedContents forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
         self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -68,6 +68,10 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateUI];
+}
 
 - (void)viewDidLoad
 {
