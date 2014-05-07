@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSString *symbol; // diamond, squiggle, oval
 @property (strong, nonatomic) NSString *shading; // solid, striped, open
 @property (strong, nonatomic) NSString *color; // red, green, purple
-
+@property (strong, readonly) NSAttributedString *attributedContents;
 
 + (NSUInteger) maxNumber;
 + (NSArray *)validSymbols;

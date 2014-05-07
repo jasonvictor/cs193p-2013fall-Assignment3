@@ -22,5 +22,6 @@
 -(void)setGameMode:(int) matchCount; //2 or 3 only - number of cards to match
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic, readonly) NSMutableAttributedString *gameLog;
 
 @end

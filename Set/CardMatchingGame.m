@@ -25,6 +25,7 @@ static const int PARTIAL_MATCH = 2;
 static const int PARTIAL_THRESHOLD = 10;
 
 @synthesize gameMode = _gameMode;
+@synthesize gameLog = _gameLog;
 
 -(int) gameMode {
     if (!_gameMode) { _gameMode = 2; }
@@ -89,6 +90,7 @@ static const int PARTIAL_THRESHOLD = 10;
 - (NSString *) chooseCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
     NSString * returnMsg = card.description;
+    NSMutableString *returnAttributedMsg = self.gameLog.mutableString;
     NSMutableArray * selectedCards = [[NSMutableArray alloc] init];
     
     if (!card.isMatched) {
@@ -157,6 +159,7 @@ static const int PARTIAL_THRESHOLD = 10;
         self.score -= COST_TO_CHOOSE;
         card.chosen = YES;
     }
+    [returnAttributedMsg appendString:returnMsg];
     return returnMsg;
 }
 

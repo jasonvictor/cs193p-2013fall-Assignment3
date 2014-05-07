@@ -14,10 +14,51 @@
 @synthesize symbol = _symbol;
 @synthesize shading = _shading;
 @synthesize color = _color;
+@synthesize attributedContents = _attributedContents;
 
 - (NSString *) contents {
     //Hint states I can return nil, but need to make history work.
     return [NSString stringWithFormat:@"%@ %@ %@ %@", self.number, self.symbol, self.shading, self.color];
+}
+
+- (NSAttributedString *) attributedContents {
+    NSString *returnValue = @"";
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    for (int i = 0; i < [self.number intValue]; i++) {
+        returnValue = [NSString stringWithFormat:@"%@%@", returnValue, self.symbol];
+    }
+
+    //Set color
+    UIColor *myColor = [UIColor redColor]; //default to red
+    if ([self.color isEqualToString:@"red"]) {
+        myColor = [UIColor redColor];
+    }
+    else if ([self.color isEqualToString:@"green"]) {
+        myColor = [UIColor greenColor];
+    }
+    else if ([self.color isEqualToString:@"purple"]) {
+        myColor = [UIColor purpleColor];
+    }
+    [attributes addEntriesFromDictionary: @{
+                                            NSForegroundColorAttributeName : myColor,
+                                            NSStrokeColorAttributeName: myColor}];
+
+    
+    //Set shading
+    if ([self.shading isEqualToString:@"solid"]) {
+        [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName: @0}];
+    }
+    else if ([self.shading isEqualToString:@"striped"]) {  //make alpha for now
+        [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName : @0,
+                                                     NSForegroundColorAttributeName:
+                                                        [myColor colorWithAlphaComponent:0.1]}];
+    }
+    else if ([self.shading isEqualToString:@"open"]) {
+        [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName: @5}];
+    }
+        
+    return [[NSMutableAttributedString alloc] initWithString:returnValue attributes:attributes];
 }
 
 #pragma mark Valid Values Of Properties
