@@ -7,9 +7,35 @@
 //
 
 #import "SetCardDeck.h"
+#import "SetCard.h"
 
 @implementation SetCardDeck
 
-#warning TODO: Need to implement the SetCardDeck
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        
+        for (NSUInteger number = 1; number <= [SetCard maxNumber]; number++) {
+            for (NSString *symbol in [SetCard validSymbols]) {
+                for (NSString *shade in [SetCard validShading]) {
+                    for (NSString *color in [SetCard validColors]) {
+                        SetCard *card = [[SetCard alloc] init];
+                        card.number = [NSNumber numberWithInt:number];
+                        card.symbol = symbol;
+                        card.shading = shade;
+                        card.color = color;
+                        [self addCard:card];
+                    }
+                }
+            }
+        }
+        
+        
+    }
+
+    NSLog(@"SetCardDeck contains %d cards", [self.cards count]);
+    return self;
+}
+
 
 @end
