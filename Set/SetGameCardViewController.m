@@ -8,13 +8,57 @@
 
 #import "SetGameCardViewController.h"
 #import "SetCardDeck.h"
+#import "GameCardViewController.h"
+#import "CardMatchingGame.h"
 
 @interface SetGameCardViewController ()
+@property (strong, nonatomic) CardMatchingGame *game;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
 @end
 
 @implementation SetGameCardViewController
 
+
+- (Deck *) createDeck {
+    
+    return [[SetCardDeck alloc] init];
+}
+
+
+- (CardMatchingGame *) game {
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                                          usingDeck:[self createDeck] ];
+    [_game setGameMode:3]; //SET is always 3 cards
+    return _game;
+}
+
+-(void) updateUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardButtonIndex];
+        [cardButton setTitle:@"SET CARD" forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
+        self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    }
+    
+}
+
+- (void) redeal {
+    [self.game resetGame];
+    self.resultLabel.text = @"";
+    [self updateUI];
+    self.game = nil;
+    [self.game setGameMode:3];
+}
+
+
+
+#pragma mark default methods
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,7 +67,7 @@
     }
     return self;
 }
-#warning TODO: need to override "CreateDeck" or any other reference to playingCardDeck
+
 
 - (void)viewDidLoad
 {
