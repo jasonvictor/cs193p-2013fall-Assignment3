@@ -20,6 +20,7 @@
 -(Card *)cardAtIndex:(NSUInteger)index;
 -(void)resetGame;
 -(void)setGameMode:(int) matchCount; //2 or 3 only - number of cards to match
+-(int)gameMode;
 
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic, readonly) NSMutableAttributedString *gameLog;

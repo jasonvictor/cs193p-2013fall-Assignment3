@@ -46,11 +46,26 @@
         self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
     
+    self.resultLabel.attributedText = self.game.gameLog;
+    NSLog(@"gameMode now equals: %d", self.game.gameMode);
+#warning matching needs to be tested.  It seems to be trying to match on two instead of 3.
+#warning create visual way to find picked cards
+    
 }
+
+
+- (IBAction)touchCardButton:(UIButton *)sender {
+    
+    int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    //self.resultLabel.text = [self.game chooseCardAtIndex:(int)chosenButtonIndex];
+    [self.game chooseCardAtIndex:(int)chosenButtonIndex];
+    [self updateUI];
+}
+
 
 - (void) redeal {
     [self.game resetGame];
-    self.resultLabel.text = @"";
+    self.resultLabel.attributedText = nil;
     [self updateUI];
     self.game = nil;
     [self.game setGameMode:3];
@@ -86,14 +101,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

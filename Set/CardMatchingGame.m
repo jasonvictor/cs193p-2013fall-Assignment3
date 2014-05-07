@@ -32,6 +32,20 @@ static const int PARTIAL_THRESHOLD = 10;
     return _gameMode;
 }
 
+
+-(NSMutableAttributedString *) gameLog {
+    if (!_gameLog) {
+        _gameLog = [[NSMutableAttributedString alloc] init];
+    }
+    return _gameLog;
+}
+
+-(void) setGameLog:(NSMutableAttributedString *)gameLog {
+    if (gameLog) {
+        _gameLog = gameLog;
+    }
+}
+
 -(void) setGameMode:(int)matchCount {
     // Check for invalid values
     _gameMode = DEFAULT_GAME_MODE;
@@ -81,6 +95,15 @@ static const int PARTIAL_THRESHOLD = 10;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
++ (NSMutableAttributedString *) selectedCardsOutput:(NSArray *) selectedCards{
+    NSMutableAttributedString * returnVal = [[NSMutableAttributedString alloc] init];
+    NSAttributedString *spacer = [[NSAttributedString alloc] initWithString:@" "];
+    for (Card *attribCard in selectedCards) {
+        [returnVal appendAttributedString:attribCard.attributedContents];
+        [returnVal appendAttributedString:spacer];
+    }
+    return returnVal;
+}
 
 //Changed this to return a String with the results.
 // The game would know best the rules on scoring
@@ -89,10 +112,10 @@ static const int PARTIAL_THRESHOLD = 10;
 
 - (NSString *) chooseCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
+    NSMutableAttributedString *attributedReturnMsg = [[NSMutableAttributedString alloc] initWithAttributedString:card.attributedContents];
     NSString * returnMsg = card.description;
-    NSMutableString *returnAttributedMsg = self.gameLog.mutableString;
     NSMutableArray * selectedCards = [[NSMutableArray alloc] init];
-    
+
     if (!card.isMatched) {
         if (card.isChosen) {
             card.chosen = NO; // what does this do?
@@ -104,8 +127,9 @@ static const int PARTIAL_THRESHOLD = 10;
                     
                     //Add the card to the matched array (you need this for displaying attempts)
                     [selectedCards addObject:otherCard];
-                    returnMsg = [NSString stringWithFormat:@"%@%@",  [selectedCards  componentsJoinedByString:@" "], card];
+                    [selectedCards addObject:card];
                     
+                    attributedReturnMsg = [CardMatchingGame selectedCardsOutput:selectedCards];
                     
                 }
             }
@@ -135,8 +159,11 @@ static const int PARTIAL_THRESHOLD = 10;
                         changeInScore += matchScore + MATCH_BONUS;
                     }
 
-                    returnMsg = [NSString stringWithFormat:@"%@%@ Matched for %d points!", [selectedCards  componentsJoinedByString:@" "], card, changeInScore];
-                 
+                    returnMsg = [NSString stringWithFormat:@" Matched for %d points!", changeInScore];
+                    NSMutableAttributedString *selectedOutput = [CardMatchingGame selectedCardsOutput:selectedCards];
+                    [selectedOutput appendAttributedString:[[NSMutableAttributedString alloc] initWithString:returnMsg]];
+                    attributedReturnMsg = selectedOutput;
+                    
                     //if any are matched, all can no longer be picked
                     for (Card * selectedCard in selectedCards) {
                         selectedCard.matched = YES;
@@ -145,7 +172,10 @@ static const int PARTIAL_THRESHOLD = 10;
                 } else { // no matches
                     self.score -= MISMATCH_PENALTY;
 
-                    returnMsg = [NSString stringWithFormat:@"%@%@ No Match %d penalty!", [selectedCards  componentsJoinedByString:@" "], card,MISMATCH_PENALTY];
+                    returnMsg = [NSString stringWithFormat:@" No Match %d penalty!", MISMATCH_PENALTY];
+                    NSMutableAttributedString *selectedOutput = [CardMatchingGame selectedCardsOutput:selectedCards];
+                    [selectedOutput appendAttributedString:[[NSMutableAttributedString alloc] initWithString:returnMsg]];
+                    attributedReturnMsg = selectedOutput;
                     
                     //Reset the cards
                     
@@ -159,8 +189,10 @@ static const int PARTIAL_THRESHOLD = 10;
         self.score -= COST_TO_CHOOSE;
         card.chosen = YES;
     }
-    [returnAttributedMsg appendString:returnMsg];
-    return returnMsg;
+    self.gameLog = attributedReturnMsg;
+    return returnMsg; //TO DO- get rid of "return" method and just use object oriented way
+    #warning not object oriented, Jason
+    
 }
 
 

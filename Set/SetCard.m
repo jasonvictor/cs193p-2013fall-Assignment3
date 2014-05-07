@@ -17,8 +17,9 @@
 @synthesize attributedContents = _attributedContents;
 
 - (NSString *) contents {
-    //Hint states I can return nil, but need to make history work.
-    return [NSString stringWithFormat:@"%@ %@ %@ %@", self.number, self.symbol, self.shading, self.color];
+    //Hint states I can return nil
+    //return [NSString stringWithFormat:@"%@ %@ %@ %@", self.number, self.symbol, self.shading, self.color];
+    return nil;
 }
 
 - (NSAttributedString *) attributedContents {
