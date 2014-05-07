@@ -33,7 +33,6 @@
         
     }
 
-    NSLog(@"SetCardDeck contains %d cards", [self.cards count]);
     return self;
 }
 
