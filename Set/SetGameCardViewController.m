@@ -11,6 +11,8 @@
 #import "GameCardViewController.h"
 #import "CardMatchingGame.h"
 
+#define INACTIVE_CARD_TINT 0.5
+
 @interface SetGameCardViewController ()
 @property (strong, nonatomic) CardMatchingGame *game;
 
@@ -43,13 +45,14 @@
         [cardButton setAttributedTitle:card.attributedContents forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
+        cardButton.alpha = 1.0 - INACTIVE_CARD_TINT*card.isMatched; //dim the picked cards
+        cardButton.alpha = 1.0 - INACTIVE_CARD_TINT*card.isChosen;
         self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
     
     self.resultLabel.attributedText = self.game.gameLog;
     NSLog(@"gameMode now equals: %d", self.game.gameMode);
 #warning matching needs to be tested.  It seems to be trying to match on two instead of 3.
-#warning create visual way to find picked cards
     
 }
 
