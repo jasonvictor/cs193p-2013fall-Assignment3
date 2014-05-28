@@ -60,6 +60,7 @@ static const int MATCH_RANK_SCORE = 4;
 static const int MATCH_SUIT_SCORE = 1;
 
 //Overridden to deal with playing card match detection
+#warning there is a bug not detecting matches for the playing card game. Probably the "partial threshold logic
 -(int) match:(NSArray *) otherCards
 {
     int score = 0;

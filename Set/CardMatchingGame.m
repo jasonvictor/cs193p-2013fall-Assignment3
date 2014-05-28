@@ -109,6 +109,7 @@ static const int PARTIAL_THRESHOLD = 10;
 - (void) chooseCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
     NSMutableAttributedString *attributedReturnMsg = [[NSMutableAttributedString alloc] initWithAttributedString:card.attributedContents];
+    NSMutableAttributedString *otherCardReturnMsg = [[NSMutableAttributedString alloc] init];
     NSString * returnMsg = card.description;
     NSMutableArray * selectedCards = [[NSMutableArray alloc] init];
 
@@ -117,21 +118,19 @@ static const int PARTIAL_THRESHOLD = 10;
             card.chosen = NO; // what does this do?
         }
         else {
+            [selectedCards addObject:card];
             for (Card *otherCard in self.cards) {
                 
                 if (otherCard.isChosen && !otherCard.isMatched) {
                     
                     //Add the card to the matched array (you need this for displaying attempts)
                     [selectedCards addObject:otherCard];
-                    [selectedCards addObject:card];
                     
                     attributedReturnMsg = [CardMatchingGame selectedCardsOutput:selectedCards];
-                    
                 }
             }
             
 #warning bug: can show the same card twice when dealt?  Why?
-#warning bug: you see the chosen card in the output twice
             //If enough cards are chosen...
             int changeInScore = 0;
 
@@ -159,6 +158,7 @@ static const int PARTIAL_THRESHOLD = 10;
                     returnMsg = [NSString stringWithFormat:@" Matched for %d points!", changeInScore];
                     NSMutableAttributedString *selectedOutput = [CardMatchingGame selectedCardsOutput:selectedCards];
                     [selectedOutput appendAttributedString:[[NSMutableAttributedString alloc] initWithString:returnMsg]];
+                    
                     attributedReturnMsg = selectedOutput;
                     
                     //if any are matched, all can no longer be picked

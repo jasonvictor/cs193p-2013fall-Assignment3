@@ -53,7 +53,8 @@
     else if ([self.shading isEqualToString:@"striped"]) {  //make alpha for now
         [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName : @0,
                                                      NSForegroundColorAttributeName:
-                                                        [myColor colorWithAlphaComponent:0.1]}];
+                                                        [myColor colorWithAlphaComponent:0.4]}];
+#warning I think the alpha isn't showing up properly on the shapes
     }
     else if ([self.shading isEqualToString:@"open"]) {
         [attributes addEntriesFromDictionary:@{NSStrokeWidthAttributeName: @5}];
