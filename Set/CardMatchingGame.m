@@ -95,7 +95,6 @@ static const int PARTIAL_THRESHOLD = 10;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
-#warning attributedcontents is only defined for setcards
 + (NSMutableAttributedString *) selectedCardsOutput:(NSArray *) selectedCards{
     NSMutableAttributedString * returnVal = [[NSMutableAttributedString alloc] init];
     NSAttributedString *spacer = [[NSAttributedString alloc] initWithString:@" "];
@@ -131,11 +130,12 @@ static const int PARTIAL_THRESHOLD = 10;
                 }
             }
             
-            
+#warning bug: can show the same card twice when dealt?  Why?
+#warning bug: you see the chosen card in the output twice
             //If enough cards are chosen...
             int changeInScore = 0;
 
-            if (selectedCards.count >= self.gameMode-1) {
+            if (selectedCards.count >= self.gameMode) {
                 
                 int matchScore = [card match:(Card *)selectedCards];  // send all selected cards to the matcher
 
