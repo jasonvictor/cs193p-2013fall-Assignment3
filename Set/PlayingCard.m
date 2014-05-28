@@ -17,6 +17,10 @@
     return [[PlayingCard rankStrings][self.rank] stringByAppendingString:self.suit] ;
 }
 
+- (NSAttributedString *) attributedContents {
+    return [[NSMutableAttributedString alloc] initWithString:self.contents];
+}
+
 
 + (NSArray *)validSuits {
     return @[@"♥️", @"♦️", @"♠︎", @"♣︎"];

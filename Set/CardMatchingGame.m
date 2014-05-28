@@ -95,6 +95,7 @@ static const int PARTIAL_THRESHOLD = 10;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
+#warning attributedcontents is only defined for setcards
 + (NSMutableAttributedString *) selectedCardsOutput:(NSArray *) selectedCards{
     NSMutableAttributedString * returnVal = [[NSMutableAttributedString alloc] init];
     NSAttributedString *spacer = [[NSAttributedString alloc] initWithString:@" "];
@@ -105,12 +106,8 @@ static const int PARTIAL_THRESHOLD = 10;
     return returnVal;
 }
 
-//Changed this to return a String with the results.
-// The game would know best the rules on scoring
-// Alternative approach would have been to keep a publically accessible property called "lastRestlt"
-// and allow the calling method get that separately.
 
-- (NSString *) chooseCardAtIndex:(NSUInteger)index {
+- (void) chooseCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
     NSMutableAttributedString *attributedReturnMsg = [[NSMutableAttributedString alloc] initWithAttributedString:card.attributedContents];
     NSString * returnMsg = card.description;
@@ -190,8 +187,7 @@ static const int PARTIAL_THRESHOLD = 10;
         card.chosen = YES;
     }
     self.gameLog = attributedReturnMsg;
-    return returnMsg; //TO DO- get rid of "return" method and just use object oriented way
-    #warning not object oriented, Jason
+
     
 }
 

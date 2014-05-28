@@ -40,7 +40,7 @@
 - (IBAction)touchCardButton:(UIButton *)sender {
 
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
-    self.resultLabel.text = [self.game chooseCardAtIndex:(int)chosenButtonIndex];
+    [self.game chooseCardAtIndex:(int)chosenButtonIndex];
     self.gameModeSelecter.enabled = FALSE;
     [self updateUI];
 }
@@ -52,6 +52,7 @@
         [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
+        self.resultLabel.text = [self.game.gameLog string];
         self.navBar.title = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
     
