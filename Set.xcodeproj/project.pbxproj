@@ -31,6 +31,8 @@
 		F1B95D0819187B0400A633DF /* SetGameCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D0719187B0400A633DF /* SetGameCardViewController.m */; };
 		F1B95D0B1918862D00A633DF /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D0A1918862D00A633DF /* SetCard.m */; };
 		F1B95D0E191894E100A633DF /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B95D0D191894E100A633DF /* SetCardDeck.m */; };
+		F1C7116D1935853E0001CB79 /* ovals-bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C7116B1935853E0001CB79 /* ovals-bar2.png */; };
+		F1C7116E1935853E0001CB79 /* m-bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C7116C1935853E0001CB79 /* m-bar2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		F1B95D0A1918862D00A633DF /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCard.m; sourceTree = "<group>"; };
 		F1B95D0C191894E100A633DF /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardDeck.h; sourceTree = "<group>"; };
 		F1B95D0D191894E100A633DF /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardDeck.m; sourceTree = "<group>"; };
+		F1C7116B1935853E0001CB79 /* ovals-bar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ovals-bar2.png"; sourceTree = "<group>"; };
+		F1C7116C1935853E0001CB79 /* m-bar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "m-bar2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		F1B95CC0191869B800A633DF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F1C7116B1935853E0001CB79 /* ovals-bar2.png */,
+				F1C7116C1935853E0001CB79 /* m-bar2.png */,
 				F1B95CC8191869B800A633DF /* AppDelegate.h */,
 				F1B95CC9191869B800A633DF /* AppDelegate.m */,
 				F1B95CD1191869B800A633DF /* ViewController.h */,
@@ -300,6 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C7116E1935853E0001CB79 /* m-bar2.png in Resources */,
+				F1C7116D1935853E0001CB79 /* ovals-bar2.png in Resources */,
 				F1B95CD0191869B800A633DF /* Main_iPad.storyboard in Resources */,
 				F1B95CD5191869B800A633DF /* Images.xcassets in Resources */,
 				F1B95CCD191869B800A633DF /* Main_iPhone.storyboard in Resources */,
@@ -548,6 +556,7 @@
 				F1B95CED191869B800A633DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1B95CEE191869B800A633DF /* Build configuration list for PBXNativeTarget "SetTests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +565,7 @@
 				F1B95CF0191869B800A633DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

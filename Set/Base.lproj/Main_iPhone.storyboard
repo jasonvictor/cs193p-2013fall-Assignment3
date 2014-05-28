@@ -561,7 +561,7 @@
         <scene sceneID="wLw-gj-CCB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ICN-nc-L6q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Matchismo" id="3ux-DV-gij"/>
+                    <tabBarItem key="tabBarItem" title="Matchismo" image="m-bar2.png" id="3ux-DV-gij"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hkC-m8-ZEr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -580,7 +580,7 @@
         <scene sceneID="DKr-wn-j5Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fcM-IE-ns6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Set" id="Zak-D1-Xsz"/>
+                    <tabBarItem key="tabBarItem" title="Set" image="ovals-bar2.png" id="Zak-D1-Xsz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dK6-Qm-AsY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -599,6 +599,8 @@
     <resources>
         <image name="cardback" width="66" height="100"/>
         <image name="cardfront" width="64" height="96"/>
+        <image name="m-bar2.png" width="30" height="30"/>
+        <image name="ovals-bar2.png" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
